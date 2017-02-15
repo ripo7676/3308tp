@@ -1,2 +1,5 @@
-# 3308tp
-Team project for CSCI 3308
+TEAM MEMBERS, GITHUB ACCOUNTS:
+Tyler Mooney
+Joshua Trujillo, 
+Morgan Thomas Burrows, 
+Patrick ?,    
