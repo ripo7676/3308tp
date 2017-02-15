@@ -5,15 +5,15 @@ Morgan Thomas Burrows,   morganburrows
 Patrick Baier,   baier145
 Richard Poulson,   ripo7676
 
-TITLE:
+TITLE: Automated Twitter Manager
 
-DESCRIPTION:
+DESCRIPTION: A tool which allows one to input tweets to a database, and then have those tweets be sent out on timed intervals.
 
-VISION STATEMENT:
+VISION STATEMENT: Create a resource for businesses to maintain a Twitter presence without having to have a dedicated social media manager.
 
-MOTIVATION:
+MOTIVATION: One of our group members works at a scooter shop, and had the idea to create this bot so said shop could spend less time managing social media while still having a presence.  
 
-RISKS:
+RISKS: 
 
 MITIGATION STRATEGIES FOR DEALING WITH THE RISKS:
 
