@@ -17,7 +17,7 @@ RISKS: Using programming language that all group members are not familiar with.
        Time Management will be challenging.
        Our group members have never worked together before.
        Using unfamiliar APIs and Databases.
-       Unfamiliarity with APP development (both web and mobile)
+       Unfamiliarity with APP development (both web and mobile.)
 
 
 MITIGATION STRATEGIES FOR DEALING WITH THE RISKS:
