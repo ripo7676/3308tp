@@ -17,13 +17,15 @@ RISKS: Using programming language that all group members are not familiar with.
        Time Management will be challenging.
        Our group members have never worked together before.
        Using unfamiliar APIs and Databases.
+       Unfamiliarity with APP development (both web and mobile)
 
 
 MITIGATION STRATEGIES FOR DEALING WITH THE RISKS:
       Group members with more experience with the programming languages will help the less-experienced members get up to speed.
       We will dedicate specific windows of time that work with all of the members of the team.
       We will democratically make important decisions regarding the project.
-      Youtube and other resources should make the learning process fairly quick.
+      YouTube and other resources should make the learning process fairly quick.
+      Impliment features in parts to guarentee workable code at various stages.
 
 LISTS OF REQUIREMENTS:
 
