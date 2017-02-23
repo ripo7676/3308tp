@@ -1,8 +1,13 @@
 TEAM MEMBERS,   GITHUB ACCOUNTS:
+
 Tyler Mooney,   tylermooney86
+
 Joshua Trujillo,   Jotr4184
-Morgan Thomas Burrows,   morganburrows
+
+Morgan Burrows,   morganburrows
+
 Patrick Baier,   baier145
+
 Richard Poulson,   ripo7676
 
 TITLE: Automated Twitter Manager (AutoTweet)
