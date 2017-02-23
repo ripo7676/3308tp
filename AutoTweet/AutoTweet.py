@@ -87,9 +87,8 @@ def setFileName():
 #select tweet
 def selectTweet():
     global tweetList, tweet
-    if not tweetList:
-        setFileName()
-        makeTweetList(filename)
+    setFileName()
+    makeTweetList(filename)
     printTextFileMenu(tweetList)
     tweetNum = input("Enter Selection: ")
     tweet = tweetList[tweetNum - 1]
