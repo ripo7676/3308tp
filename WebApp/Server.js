@@ -20,6 +20,10 @@ router.get("/settings",function(req,res){
   res.sendFile(path + "settings.html");
 });
 
+router.get("/about",function(req,res){
+  res.sendFile(path + "about.html");
+});
+
 router.get("/login",function(req,res){
   res.sendFile(path + "login.html");
 });
