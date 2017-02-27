@@ -12,18 +12,17 @@ router.get("/",function(req,res){
   res.sendFile(path + "index.html");
 });
 
-router.get("/about",function(req,res){
-  res.sendFile(path + "about.html");
+router.get("/post",function(req,res){
+  res.sendFile(path + "post.html");
 });
 
-router.get("/contact",function(req,res){
-  res.sendFile(path + "contact.html");
+router.get("/settings",function(req,res){
+  res.sendFile(path + "settings.html");
 });
 
-router.get("/shnerp",function(req,res){
-  res.sendFile(path + "shnerp.html");
+router.get("/login",function(req,res){
+  res.sendFile(path + "login.html");
 });
-
 
 app.use("/",router);
 
