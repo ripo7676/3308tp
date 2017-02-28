@@ -1,6 +1,8 @@
 <html>
 <head>
+
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="login.css" />
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -16,33 +18,55 @@
       </ul>
 </nav>
 </div>
-<br/>
-<form class="form-horizontal" role="form" style="width: 50%;">
-  <div class="form-group">
-      <label for="name" class="col-sm-2 control-label">Email</label>
-      <div class="col-sm-10">
-          <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" value="">
-      </div>
-  </div>
-  <div class="form-group">
-      <label for="Password" class="col-sm-2 control-label">Password</label>
-      <div class="col-sm-10">
-          <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" value="">
-      </div>
-  </div>
-
-  <div class="form-group">
-      <div class="col-sm-10 col-sm-offset-2">
-          <input id="submit" name="submit" type="submit" value="Log In" class="btn btn-primary">
-      </div>
-  </div>
-  <div class="form-group">
-      <div class="col-sm-10 col-sm-offset-2">
-          <! Will be used to display an alert to the user>
-      </div>
-  </div>
-</form>
 </div>
-  </div>
+<div class="container">
+              <form class="form-signin" method="POST" action="/">
+
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    <div align="center">
+                <h2 class="form-signin-heading">Please sign in</h2>
+              </div>
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <label for="id_login" name="login" class="sr-only">Username</label>
+                        <input id="id_login" class="form-control" placeholder="Username" required autofocus>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <label for="id_password" class="sr-only">Password</label>
+                        <input type="password" id="id_password" name="password" class="form-control" placeholder="Password" required>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" value="remember-me"> Remember me
+                          </label>
+                        </div>
+                        <a class="button secondaryAction" href="{% url 'account_reset_password' %}"></a>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+                </div>
+              </form>
+        </div>
+
 </body>
 </html>
