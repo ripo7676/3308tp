@@ -3,25 +3,52 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </head>
+<style>
+.bg-1 {
+    background-color: #ffffff; /* White */
+    color: #000000;
+    font-size: 16px;
+}
+.bg-2 {
+    background-color: #1abc9c; /* Green */
+    color: #ffffff;
+    font-size: 16px;
+}
+.bg-3 {
+    background-color: #ffffff; /* White */
+    color: #555555;
+    font-size: 16px;
+}
+.container-fluid {
+    padding-top: 1em;
+    padding-bottom: 4em;
+}
+
+</style>
 <body>
-  <div>
-  <div>
-  <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
-         <ul class="nav navbar-nav">
+  <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="padding-right:16px;">>
+         <ul class="nav navbar-nav navbar-right">
         <li><a href="/">Home</a></li>
         <li><a href="/post">Post To Twitter</a></li>
         <li><a href="/settings">Settings</a></li>
         <li class="active"><a href="/about">About Us<span class="sr-only">(current)</span></a></li>
         <li><a href="/login">Log In</a></li>
-</nav>
-</div>
+  </nav>
+  <!-- <br/> -->
+  <!-- <div class="jumbotron"> -->
+  <div class="container-fluid bg-1 text-left">
+  <h2>How We Got Started</h2>
   <br/>
-  <div class="jumbotron">
   <p>
-    The motivation for APPNAME came to one of our group members while working in a scooter shop.  One of his many tasks was managing the social media of the shop's site, which distracted him from the rest of his duties.  Keeping the shop's social media updated was important, but tweeting interesting facts every hour was lowering his productivity.  What if many of the tasks regarding updating social media could be automatic?
-    Thus, APPNAME was born.  It's designed to automate many tasks regarding...
+    The motivation for Automated Twitter Manager (ATM) came to one of our group members while he was working in a scooter shop.  One of his tasks was making sure that the social media for the website was regularly updated, a task that frequently interrupted his other tasks.  "Why do I have to stop what I'm doing every hour," he thought, "just to post something from a list on my computer?  Isn't there a way to automate posting to social media sites such as Twitter?"  Thus, ATM was created.</p>
+  </div>
+  <div class="container-fluid bg-2 text-left">
+  <h3>Using ATM</h3>
+  <p>
+    We feel that you shouldn't have to stop what you're doing just to post a preconceived idea.  Instead, simply upload tweets ahead of time, and configure ATM to post them at regular intervals throughout the day.
   </p>
 </div>
+<!-- </div> -->
   </div>
 </body>
 </html>
