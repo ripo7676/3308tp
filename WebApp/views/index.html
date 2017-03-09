@@ -1,45 +1,50 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>AutoTweet</title>
+    <meta charset="UTF-8">
+    <title>AutoTweet</title>
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css" />
+</head>
+
+<body>
+    <div>
+        <div>
+            <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
+                    <li><a href="/post">Post To Twitter</a></li>
+                    <li><a href="/settings">Settings</a></li>
+                    <li><a href="/login">Log In</a></li>
+                </ul>
+            </nav>
+        </div>
+        <br/>
+        <div class="jumbotron;" style="text-align:center;"> <b><font size="6;">
+Welcome to the Automated Twitter Manager!
+</font></b>
+            <p></p>
+            <p>
+                The Automated Twitter Manager is a solution for small businesses to maintain a social media presence, via uploading tweet databases to our software.
+            </p>
+            <p>
+                Our hope is that using our tool small businesses will not need dedicated staff for social media, check out the tool below.
+            </p>
+            <form action="login">
+                <input type="submit" value="Login Now" />
+            </form>
+            <h2>Our Service!</h2>
+            <p><img src="http://oi68.tinypic.com/2gspxua.jpg" alt="Screenshot" style="float:center">
+            </p>
+        </div>
+    </div>
+</body>
+<!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-route.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="script.js"></script>
-</head>
-<body>
-<div>
-<div>
-<nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
-       <ul class="nav navbar-nav">
-      <li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
-      <li><a href="/post">Post To Twitter</a></li>
-      <li><a href="/settings">Settings</a></li>
-      <li><a href="/login">Log In</a></li>
-    </ul>
-</nav>
-</div>
-<br/>
-<div class="jumbotron;" style="text-align:center;"> <b><font size="6;">
-Welcome to the Automated Twitter Manager!
-</font></b>
-<p></p>
-<p>
-The Automated Twitter Manager is a solution for small businesses to maintain a social media presence, via uploading tweet databases to our software.
-</p>
-<p>
-Our hope is that using our tool small businesses will not need dedicated staff for social media, check out the tool below.
-</p>
-<form action="login">
-    <input type="submit" value="Login Now" />
-</form>
-<h2>Our Service!</h2>
-<p><img src="http://oi68.tinypic.com/2gspxua.jpg" alt="Screenshot" style="float:center">
-</p>
-</div>
-</div>
-</body>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
 </html>
