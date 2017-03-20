@@ -3,6 +3,8 @@ var app = express();
 var router = express.Router();
 var path = __dirname + '/views/';
 
+app.use(express.static( __dirname + '/styles'));
+
 router.use(function (req,res,next) {
   console.log("/" + req.method);
   next();
