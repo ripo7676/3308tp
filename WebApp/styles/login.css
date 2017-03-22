@@ -1,0 +1,54 @@
+@import "bourbon";
+body {
+    background-color: #002080 !important;
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,002080+44,002080+59,000000+100 */
+		background: -moz-linear-gradient(top, #000000 0%, #002080 44%, #002080 59%, #000000 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top, #000000 0%,#002080 44%,#002080 59%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom, #000000 0%,#002080 44%,#002080 59%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+.wrapper {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.round {
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+}
+
+.form-signin {
+    max-width: 380px;
+    padding: 15px 35px 45px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 123, 0.1);
+    .form-signin-heading, .checkbox {
+        margin-bottom: 30px;
+    }
+    .checkbox {
+        font-weight: normal;
+    }
+    .form-control {
+        position: relative;
+        font-size: 16px;
+        height: auto;
+        padding: 10px;
+        @include box-sizing(border-box);
+        &:focus {
+            z-index: 2;
+        }
+    }
+    input[type="text"] {
+        margin-bottom: -1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    input[type="password"] {
+        margin-bottom: 20px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+}
