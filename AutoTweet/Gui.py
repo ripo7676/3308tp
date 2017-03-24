@@ -4,23 +4,38 @@ class App:
   def __init__(self, master):
     frame = Frame(master)
     frame.pack()
-    self.buttonSelect = Button(frame, 
+    self.buttonSelect = Button(frame,
+			 width=30, 
+			bg='#1d20af',
+			fg='#FFFFFF',
                          text="Select Tweet From File",
                          command=self.assignValueOne)
     self.buttonSelect.pack()
     self.buttonRandom = Button(frame,
+			 width=30, 
+			bg='#1d20af',
+			fg='#FFFFFF',
                          text="Generate Random Tweet",
                          command=self.assignValueTwo)
     self.buttonRandom.pack()
     self.buttonPost = Button(frame,
+			 width=30, 
+			bg='#1d20af',
+			fg='#FFFFFF',
                          text="Post To Twitter",
                          command=self.assignValueThree)
     self.buttonPost.pack()
     self.buttonChange = Button(frame,
+			 width=30, 
+			bg='#1d20af',
+			fg='#FFFFFF',
                          text="Change Twitter Account",
                          command= self.assignValueFour)
     self.buttonChange.pack()
     self.buttonQuit = Button(frame,
+			 width=30, 
+			bg='#1d20af',
+			fg='#FFFFFF',
                          text="Exit AutoTweet",
                          command=quit)
     self.buttonQuit.pack()
