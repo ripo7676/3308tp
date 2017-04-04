@@ -1,3 +1,6 @@
+import random
+import os
+import Signin
 from Tkinter import *
 x=0
 class App:
@@ -55,10 +58,14 @@ class App:
     print x
 
   def assignValueFour(self):
-    global x
-    x=4
-    print x
+    root=Tk()
+    myapp=Signin.Signin(root)
+    root.mainloop()
 
-root = Tk()
-app = App(root)
+root=Tk()
+app=App(root)
 root.mainloop()
+
+
+  
+

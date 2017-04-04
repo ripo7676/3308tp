@@ -1,5 +1,6 @@
 import random
 import os
+from Gui import App
 
 
 #returns current location of TextFiles
