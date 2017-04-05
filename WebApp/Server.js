@@ -27,7 +27,7 @@ router.get("/login",function(req,res){
 });
 
 router.post("/login",function(req,res){
-  res.sendFile(path + "settings.html");
+  res.sendFile(path + "login.html");
 });
 
 app.use("/",router);
