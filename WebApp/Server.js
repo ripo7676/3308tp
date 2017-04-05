@@ -26,6 +26,10 @@ router.get("/login",function(req,res){
   res.sendFile(path + "login.html");
 });
 
+router.post("/login",function(req,res){
+  res.sendFile(path + "settings.html");
+});
+
 app.use("/",router);
 
 app.use("*",function(req,res){
@@ -35,5 +39,3 @@ app.use("*",function(req,res){
 app.listen(process.env.PORT||3000 ,function(){
   console.log("Live at Port 3000");
 });
-
-
