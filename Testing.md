@@ -29,7 +29,7 @@ User Acceptance Test Plans:
 	Post Conditions
 		User has access to our webapp.
 
-![ScreenShot](3308tp/Trello screen shot.png)
+![ScreenShot](TrelloScreenShot.png)
 
 Login Authentication Test:
 	
