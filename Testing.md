@@ -5,6 +5,13 @@ Project Name: Automated Twitter Manager
 Vision:Create a resource for businesses to maintain a Twitter presence without having to have a dedicated social media manager.
 
 Automated Test Cases:
+	
+	We will be using selenium as our automated test tool.
+	It is a tool to automate the browser, we will program it to click buttons and fill out forms.
+
+	link: http://www.seleniumhq.org/
+
+	![ScreenShot](TrelloScreenShot.png)//insert correct screenshot of selenium working here
 
 User Acceptance Test Plans: 
 
@@ -29,7 +36,7 @@ User Acceptance Test Plans:
 	Post Conditions
 		User has access to our webapp.
 
-![ScreenShot](TrelloScreenShot.png)
+
 
 Login Authentication Test:
 	
@@ -71,4 +78,3 @@ User Sign-Up Test:
 
 	Post Conditions
 
-![ScreenShot](ShnerpTweet.png)
