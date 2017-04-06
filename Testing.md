@@ -29,6 +29,8 @@ User Acceptance Test Plans:
 	Post Conditions
 		User has access to our webapp.
 
+	![ScreenShot](Trello screen shot.png)
+
 Login Authentication Test:
 	
 	Use Case Name
