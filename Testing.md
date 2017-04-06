@@ -28,3 +28,43 @@ User Acceptance Test Plans:
 		N/a
 	Post Conditions
 		User has access to our webapp.
+
+Login Authentication Test:
+	
+	Use Case Name
+
+	Description
+
+	Pre-Conditions
+
+	Test Steps
+
+	Expected Result
+
+	Actual Result
+
+	Status
+
+	Notes
+
+	Post Conditions
+
+User Sign-Up Test:
+
+	Use Case Name
+
+	Description
+
+	Pre-Conditions
+
+	Test Steps
+
+	Expected Result
+
+	Actual Result
+
+	Status
+
+	Notes
+
+	Post Conditions
