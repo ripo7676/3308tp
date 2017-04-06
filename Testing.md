@@ -11,7 +11,7 @@ Automated Test Cases:
 
 	link: http://www.seleniumhq.org/
 
-	![ScreenShot](TrelloScreenShot.png)//insert correct screenshot of selenium working here
+![ScreenShot](TrelloScreenShot.png)//insert correct screenshot of selenium working here
 
 User Acceptance Test Plans: 
 
