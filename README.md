@@ -46,3 +46,5 @@ METHODOLOGY: Agile
 PROJECT TRACKING SOFTWARE: Trello
 
 - URL: https://trello.com/b/1WUBpEDS
+
+Automation rules for twitter: https://support.twitter.com/articles/76915#

@@ -19,6 +19,17 @@ VISIT: mLab.com
 USER: Jotr4184
 PASS: CSCI3308TEAM1107
 
+==================================
+== Twitter API stuff =============
+==================================
+Consumer Key (API Key) kGgbIA1uK7WTjNV6nTCtZonp4
+Consumer Secret (API Secret) VIVm50t5LMiqiGOKbBHdJ4q6Cc5RQFA43IdPQLM7vWRno4Jb3D
+Access Level Read and write (modify app permissions)
+Owner rick_poulson_CU
+Owner ID 852218747129651200 
+
+
+
 There you have it!
 
 To start up the App, just CD into the directory (In Windows Command Prompt -- UGH)
