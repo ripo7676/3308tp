@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd AppAuth
-node Server.js
+node server.js
