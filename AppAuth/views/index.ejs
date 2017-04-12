@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Team1107</title>
+    <title>AutoTweet</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
     <style>
@@ -10,17 +10,22 @@
     </style>
 </head>
 <body>
+
 <div class="container">
-
-    <div class="jumbotron text-center">
-        <h1><span class="fa fa-lock"></span> Team1107 - Authentication</h1>
-
-        <p>Login or Register with:</p>
-
-        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
+  <div class="row">					<!-- Used to utilize the bootstrap grid system -->
+	<div class="col-sm-3"></div>    <!-- Empty column used to center the jumbotron -->
+	  <div class="col-sm-6">        <!-- Jumbotron uses 6/12th of width of window -->
+        <div class="jumbotron text-center">
+          
+		  <h1><span class="fa fa-lock"></span> AutoTweet</h1>
+          <p>Login or Register with:</p>
+          <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Sign in</a>
+          <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Sign up</a>
+ 
+        </div>
+	  </div>
     </div>
-
 </div>
+
 </body>
 </html>
