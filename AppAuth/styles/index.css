@@ -1,5 +1,6 @@
-@import "bourbon";
+/* @import "bourbon";  not sure what this is for, ? */
 body {
+	padding-top:80px;
     background-color: #D3D3D3;
 		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,002080+44,002080+59,000000+100 */
 		/*background: -moz-linear-gradient(top, #000000 0%, #002080 44%, #002080 59%, #000000 100%); /* FF3.6-15 */
@@ -19,6 +20,17 @@ body {
     -moz-border-radius: 15px;
 }
 
+.jumbotron {
+    background-color: #FFFFFF;
+}
+
+.btn-default {
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: #80b8dd;
+}
+
+/*
 .form-signin {
     max-width: 480px;
     padding: 15px 35px 45px;
@@ -52,3 +64,4 @@ body {
         border-top-right-radius: 0;
     }
 }
+*/
