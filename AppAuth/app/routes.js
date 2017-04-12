@@ -52,6 +52,28 @@ module.exports = function(app, passport) {
             user : req.user // get the user out of session and pass to template
         });
     });
+	
+	// =====================================
+    // SETTINGS SECTION ====================
+    // =====================================
+    // we will want this protected so you have to be logged in to visit
+    // we will use route middleware to verify this (the isLoggedIn function)
+    app.get('/settings', isLoggedIn, function(req, res) {
+        res.render('settings.ejs', {
+            user : req.user // get the user out of session and pass to template
+        });
+    });
+	
+	// =====================================
+    // POST TO TWITTER SECTION =============
+    // =====================================
+    // we will want this protected so you have to be logged in to visit
+    // we will use route middleware to verify this (the isLoggedIn function)
+    app.get('/post', isLoggedIn, function(req, res) {
+        res.render('post.ejs', {
+            user : req.user // get the user out of session and pass to template
+        });
+    });
 
     // =====================================
     // LOGOUT ==============================

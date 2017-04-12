@@ -25,9 +25,19 @@ body {
 }
 
 .btn-default {
-	margin-left: 10px;
-	margin-right: 10px;
-	background-color: #80b8dd;
+    background: #0099cc;
+	margin-left: 15px;
+	margin-right: 15px;
+    color: #ffffff;
+}
+ 
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
+    background: #33a6cc;
+	text-decoration: underline
+}
+ 
+.btn-default:active, .btn-default.active {
+    background: #007299;
 }
 
 /*
