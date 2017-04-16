@@ -22,14 +22,15 @@ var test1 = function () {
 var test2 = function () {
   var mysql = require('mysql');
   var connection = mysql.createConnection({
-    host     : 'edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    host     : 'edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.con',
     port     : '3306',
     user     : 'ts3vd91emf15m4kd',
     password : 'n92esovs7r8xm80x',
     database : 'gvavvb6s6sprtg2u'
   });
   connection.connect(function(err) {
-    if (err) return "Test2 (MySQL connection): Failure, couldn't connect."
+    console.log(err.code); // 'ECONNREFUSED'
+    console.log(err.fatal); // true
   });
   connection.end();
   return "Test2 (MySQL connection): Success!"
