@@ -3,17 +3,24 @@
 import urllib
 import json
 from pprint import pprint
+from BeautifulSoup import BeautifulSoup
 
-file = open("norris.txt", 'r+')
 
-file.truncate()
+def generateJoke():
 
-link = "http://api.icndb.com/jokes/random"
-f = urllib.urlopen(link)
+	file = open("norris.txt", 'r+')
 
-j = json.load(urllib.urlopen(link))
+	file.truncate()
 
-joke = j['value']['joke']
-file.write(joke)
+	link = "http://api.icndb.com/jokes/random"
+	f = urllib.urlopen(link)
 
-file.close
+	j = json.load(urllib.urlopen(link))
+
+	joke = j['value']['joke']
+
+	decode = str(BeautifulSoup(joke, convertEntities=BeautifulSoup.HTML_ENTITIES))
+	
+	file.write(decode)
+
+	file.close
