@@ -2,7 +2,9 @@ import norris
 
 i = 0
 
-while i != 2:
+quant = 2
+
+while i != quant:
 
 	norris.generateJoke()
 
