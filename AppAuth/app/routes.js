@@ -90,7 +90,17 @@ module.exports = function(app, passport) {
     // =====================================
     app.post('/saveTweet', isLoggedIn, function(req, res) {
 		console.log(req.body.saveTweetInput)
-		console.log(req.user._id)
+		var User = require('../app/models/user');
+		User.findByIdAndUpdate(
+		  req.user._id,
+		  { $push: { 'twitter.tweets.messages':
+		    {category: 'test', body: req.body.saveTweetInput}}
+		  },
+		  { safe: true, upsert: true, new : true},
+		  function(err, numberAffected, raw) {
+            if (err) console.log(err);
+		  }	
+		)
         res.render('post.ejs', {
             user : req.user // get the user out of session and pass to template
         });
@@ -100,11 +110,19 @@ module.exports = function(app, passport) {
     // SAVE CATEGORY =======================
     // =====================================
     app.post('/saveCategory', isLoggedIn, function(req, res) {
-		console.log(req.user.test())
-		req.user.addTweetCategory(req.body.categoryInput)
-        res.render('post.ejs', {
-            user : req.user // get the user out of session and pass to template
-        });
+		var User = require('../app/models/user');
+		User.findByIdAndUpdate(
+		  req.user._id,
+		  { $push: { 'twitter.tweets.categories': {name: req.body.categoryInput}}},
+		  { safe: true, upsert: true, new : true},
+		  function(err, numberAffected, raw) {
+            if (err) console.log(err);
+		  }	
+		)
+		res.redirect('/post');
+        //res.render('post.ejs', {
+        //    user : req.user // get the user out of session and pass to template
+        //});
     });
 
     // =====================================

@@ -15,7 +15,7 @@
                     <li><a href="/settings">Settings</a></li>
                 </ul>
             </nav>
-
+<p id="demo">testing</p>
 <div class="container">
 
   <div class="page-header text-center">
@@ -65,5 +65,15 @@
   </form>
 </div>
 
+<script>
+var obj = user.twitter.tweets.categories;
+var myString = "";
+for(key in obj){
+    myString = myString + ", " + key['name'];
+	// The key is key
+    // The value is obj[key]
+}
+    document.getElementById("demo").innerHTML = myString;
+</script>
 </body>
 </html>
