@@ -74,6 +74,38 @@ module.exports = function(app, passport) {
             user : req.user // get the user out of session and pass to template
         });
     });
+	
+	// =====================================
+    // POST TWEET ==========================
+    // =====================================
+    app.post('/postTweet', isLoggedIn, function(req, res) {
+		console.log(req.body.tweetInput)
+        res.render('post.ejs', {
+            user : req.user // get the user out of session and pass to template
+        });
+    });
+	
+	// =====================================
+    // SAVE TWEET ==========================
+    // =====================================
+    app.post('/saveTweet', isLoggedIn, function(req, res) {
+		console.log(req.body.saveTweetInput)
+		console.log(req.user._id)
+        res.render('post.ejs', {
+            user : req.user // get the user out of session and pass to template
+        });
+    });
+	
+	// =====================================
+    // SAVE CATEGORY =======================
+    // =====================================
+    app.post('/saveCategory', isLoggedIn, function(req, res) {
+		console.log(req.user.test())
+		req.user.addTweetCategory(req.body.categoryInput)
+        res.render('post.ejs', {
+            user : req.user // get the user out of session and pass to template
+        });
+    });
 
     // =====================================
     // LOGOUT ==============================

@@ -49,5 +49,24 @@ userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.local.password);
 };
 
+// return all tweet categories for user
+userSchema.methods.getTweetCategories = function() {
+    return bcrypt.compareSync(password, this.local.password);
+};
+
+// save new tweet category
+userSchema.methods.addTweetCategory = function(newCategory) {
+  this.findOneAndUpdate(
+    { 'local.email': 'rick.poulson@colorado.edu' },
+	{ 'local.email': 'changed.it@colorado.edu' },
+	{new: true},
+	function (err, doc) {
+      if (err) console.log(err)
+	  else console.log("I think everything is ok")
+    }
+  );
+};
+
+
 // create the model for users and expose it to our app
 module.exports = mongoose.model('User', userSchema);

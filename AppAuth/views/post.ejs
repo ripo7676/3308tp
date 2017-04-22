@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 </head>
 <body>
+
             <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
                 <ul class="nav navbar-nav">
                     <li><a href="/profile">Home</a></li>
@@ -17,23 +18,52 @@
 
 <div class="container">
 
-    <div class="page-header text-center">
-        <h1><span class="fa fa-twitter"></span> Post to Twitter</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-    </div>
+  <div class="page-header text-center">
+    <h1><span class="fa fa-twitter"></span> Post to Twitter</h1>
+    <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+  </div>
+</div>
 
-<div class="row">
+<div class="container">
+  <form method="post" action="/postTweet">
+    <div class="form-group row">
+      <label for="tweetInput" class="col-md-2 col-form-label col-form-label-lg">Manual Tweet</label>
+      <div class="col-md-9">
+        <input type="text" class="form-control form-control-lg" id="tweetInput" name="tweetInput"
+		placeholder="Type your tweet in here">
+      </div>
+	  <div class="col-md-1">
+        <button type="submit" class="btn btn-primary">Post</button>
+      </div>
+    </div>
+  </form>
   
-  <!-- https://v4-alpha.getbootstrap.com/components/forms/#defining-states -->
-  <form>
-    <div class="form-group row has-success">
-      <label for="inputHorizontalSuccess" class="col-sm-2 col-form-label">Manual Tweet</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control form-control-success" id="inputHorizontalSuccess" placeholder="Enter your tweet in here">
-        <div class="form-control-feedback">Possible success message if format OK.</div>
+  <form method="post" action="/saveCategory">
+    <div class="form-group row">
+      <label for="categoryInput" class="col-md-2 col-form-label col-form-label-lg">Create Category</label>
+      <div class="col-md-9">
+        <input type="text" class="form-control form-control-lg" id="categoryInput" name="categoryInput"
+		placeholder="Type your new category here">
+      </div>
+	  <div class="col-md-1">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </div>
+  </form>
+  
+  <form method="post" action="/saveTweet">
+    <div class="form-group row">
+      <label for="saveTweetInput" class="col-md-2 col-form-label col-form-label-lg">Save Tweet to DB</label>
+      <div class="col-md-9">
+        <input type="text" class="form-control form-control-lg" id="saveTweetInput" name="saveTweetInput"
+		placeholder="Type tweet to be saved to database">
+      </div>
+	  <div class="col-md-1">
+        <button type="submit" class="btn btn-primary">Save</button>
       </div>
     </div>
   </form>
 </div>
+
 </body>
 </html>
