@@ -27,7 +27,7 @@ app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser()); // get information from html forms
 
 app.use("/styles", express.static(__dirname + '/styles'));
-app.use("/config", express.static(__dirname + '/config')); 
+app.use("/config", express.static(__dirname + '/config'));
 
 app.set('view engine', 'ejs'); // set up ejs for templating
 

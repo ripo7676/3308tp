@@ -10,6 +10,13 @@
 </head>
 <body>
 
+<!-- Needed to get categories/messages here, EJS doesn't seem to work right in <script> section -->
+<div id="userTwitterData" twitterDataValue='<%= userJSON %>'</div>
+<script>
+  var string1 = $("#userTwitterData").attr("twitterDataValue");
+  usersTweets = JSON.parse(string1);
+</script>
+
             <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
                 <ul class="nav navbar-nav">
                     <li><a href="/profile">Home</a></li>
@@ -19,7 +26,6 @@
             </nav>
 
 <div class="container">
-
   <div class="page-header text-center">
     <h1><span class="fa fa-twitter"></span> Post to Twitter</h1>
     <a href="/logout" class="btn btn-default btn-sm">Logout</a>
@@ -118,19 +124,28 @@
 	  <% } %>
 	</div>
 	<div class="form-group row">
-        <select class="form-control" id="selectSavedTweet" name="selectSavedTweet">
-		  <option value="">Please select a saved tweet</option>
-        </select>
+      <select class="form-control" id="selectSavedTweet" name="selectSavedTweet">
+      </select>
 	  <div class="col-sm-1">
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary">Post</button>
       </div>
 	</div>
   </form>
   
 <script>
   var selectedCategory = "";
-  $('input:radio[name="postTweetCategory"]').change(function() {
-	selectedCategory = this.value;
+  $('input:radio[name="postTweetCategory"]').change(function() {  // when category is changed..
+	selectedCategory = this.value;  // store the name of the catagory selected
+	var mySelect = document.getElementById('selectSavedTweet');
+	mySelect.options.length = 0;  // clear all but initial option
+	for (var i=0; i < usersTweets.length; i++) {
+	  if (usersTweets[i].name == selectedCategory) {
+	    for (var j=0; j < usersTweets[i].messages.length; j++) {
+		  mySelect.options[j] = new Option (usersTweets[i].messages[j].body,
+		  usersTweets[i].messages[j].body);
+		}
+	  }
+	}
   });
 </script>
   

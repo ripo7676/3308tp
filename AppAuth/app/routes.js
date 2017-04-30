@@ -70,9 +70,11 @@ module.exports = function(app, passport) {
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/post', isLoggedIn, function(req, res) {
-        res.render('post.ejs', {
-            user : req.user // get the user out of session and pass to template
-        });
+		  // dictionary of categories/messages, seems easer to parse than 'user'
+		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories)
+        res.render('post.ejs',
+          { user : req.user, userJSON : thisUserJSON }
+        );
     });
 	
 	// =====================================
@@ -80,9 +82,11 @@ module.exports = function(app, passport) {
     // =====================================
     app.post('/postTweet', isLoggedIn, function(req, res) {
 		console.log(req.body.tweetInput)
-        res.render('post.ejs', {
-            user : req.user // get the user out of session and pass to template
-        });
+		  // dictionary of categories/messages, seems easer to parse than 'user'
+		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories)
+        res.render('post.ejs',
+          { user : req.user, userJSON : thisUserJSON }
+        );
     });
 	
 	// =====================================
@@ -102,9 +106,11 @@ module.exports = function(app, passport) {
             }	
           )
 		}
-        res.render('post.ejs', {
-            user : req.user // get the user out of session and pass to template
-        });
+		  // dictionary of categories/messages, seems easer to parse than 'user'
+		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories)
+        res.render('post.ejs',
+          { user : req.user, userJSON : thisUserJSON }
+        );
     });
 	
 	// =====================================
@@ -122,9 +128,11 @@ module.exports = function(app, passport) {
 		    }	
 		  )
 		}
-        res.render('post.ejs', {
-            user : req.user // get the user out of session and pass to template
-        });
+		  // dictionary of categories/messages, seems easer to parse than 'user'
+		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories)
+        res.render('post.ejs',
+          { user : req.user, userJSON : thisUserJSON }
+        );
     });
 	
 	// =====================================
@@ -141,9 +149,11 @@ module.exports = function(app, passport) {
             if (err) console.log(err);
 		  }	
 		)
-        res.render('post.ejs', {
-            user : req.user // get the user out of session and pass to template
-        });
+		  // dictionary of categories/messages, seems easer to parse than 'user'
+		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories)
+        res.render('post.ejs',
+          { user : req.user, userJSON : thisUserJSON }
+        );
     });
 
     // =====================================
