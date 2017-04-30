@@ -2,9 +2,11 @@
 <!doctype html>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>AutoTweet</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <script src="/config/jquery-3.2.1.min.js"></script>
+	<script src="/config/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/styles/bootstrap.min.css"/>
 </head>
 <body>
 
@@ -15,11 +17,6 @@
                     <li><a href="/settings">Settings</a></li>
                 </ul>
             </nav>
-<p>			
-<% for(var i=0; i < user.twitter.tweets.categories.length; i++) { %>
-   <%= user.twitter.tweets.categories[i].name %>
-<% } %>
-</p>
 
 <div class="container">
 
@@ -30,45 +27,112 @@
 </div>
 
 <div class="container">
+  <!-- MANUAL TWEET -->
   <form method="post" action="/postTweet">
     <div class="form-group row">
-      <label for="tweetInput" class="col-md-2 col-form-label col-form-label-lg">Manual Tweet</label>
-      <div class="col-md-9">
-        <input type="text" class="form-control form-control-lg" id="tweetInput" name="tweetInput"
-		placeholder="Type your tweet in here">
+      <label for="tweetInput" class="col-sm-2 col-form-label col-form-label-lg">Manual Tweet</label>
+	</div>
+	<div class="form-group row">
+      <div class="col-sm-9">
+        <textarea class="form-control" rows="3" id="tweetInput" name="tweetInput"
+		placeholder="Type your tweet in here"></textarea>
       </div>
-	  <div class="col-md-1">
+	  <div class="col-sm-1">
         <button type="submit" class="btn btn-primary">Post</button>
       </div>
     </div>
   </form>
   
+  <div class="col-sm-12" style="height:50px;"></div>  <!-- white space -->
+  
+  <!-- CREATE CATEGORY -->
   <form method="post" action="/saveCategory">
     <div class="form-group row">
-      <label for="categoryInput" class="col-md-2 col-form-label col-form-label-lg">Create Category</label>
-      <div class="col-md-9">
+      <label for="categoryInput" class="col-sm-2 col-form-label col-form-label-lg">Create Category</label>
+      <div class="col-sm-4">
         <input type="text" class="form-control form-control-lg" id="categoryInput" name="categoryInput"
 		placeholder="Type your new category here">
       </div>
-	  <div class="col-md-1">
+	  <div class="col-sm-1">
         <button type="submit" class="btn btn-primary">Create</button>
       </div>
     </div>
   </form>
   
-  <form method="post" action="/saveTweet">
+  <div class="col-sm-12" style="height:50px;"></div>  <!-- white space -->
+  
+  <!-- DELETE CATEGORY -->
+  <form method="post" action="/deleteCategory">
     <div class="form-group row">
-      <label for="saveTweetInput" class="col-md-2 col-form-label col-form-label-lg">Save Tweet to DB</label>
-      <div class="col-md-9">
-        <input type="text" class="form-control form-control-lg" id="saveTweetInput" name="saveTweetInput"
-		placeholder="Type tweet to be saved to database">
+	  <label for="selectDeleteCategory" class="col-sm-2 col-form-label col-form-label-lg">Delete Category</label>
+	  <div class="col-sm-4">
+        <select class="form-control" id="selectDeleteCategory" name="selectDeleteCategory">
+		  <option value="">Please select catagory to be deleted</option>
+	      <% for(var i=0; i < user.twitter.tweets.categories.length; i++) { %>
+          <option value="<%= user.twitter.tweets.categories[i].name %>">
+		  <%= user.twitter.tweets.categories[i].name %></option>
+	      <% } %>
+        </select>
       </div>
-	  <div class="col-md-1">
-        <button type="submit" class="btn btn-primary">Save</button>
+	  <div class="col-sm-1">
+        <button type="submit" class="btn btn-primary">Delete</button>
       </div>
     </div>
   </form>
-</div>
-
+  
+  <div class="col-sm-12" style="height:50px;"></div>  <!-- white space -->
+  
+  <!-- SAVE TWEET -->
+  <form method="post" action="/saveTweet">
+    <div class="form-group row">
+      <label for="saveTweetCategory" class="col-sm-3 col-form-label col-form-label-lg">
+	  Save Tweet to Database</label>
+	  <% for(var i=0; i < user.twitter.tweets.categories.length; i++) { %>
+	  <label class="radio-inline"><input type="radio" id="saveTweetCategory" name="saveTweetCategory"
+	  value="<%= user.twitter.tweets.categories[i].name %>">
+	  <%= user.twitter.tweets.categories[i].name %></label>
+	  <% } %>
+	</div>
+	<div class="form-group row">
+	  <div class="col-sm-9">
+	    <textarea class="form-control" rows="3" id="saveTweetInput" name="saveTweetInput"
+		placeholder="Type your tweet in here"></textarea>
+      </div>
+	  <div class="col-sm-1">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+	</div>
+  </form>
+  
+  <div class="col-sm-12" style="height:50px;"></div>  <!-- white space -->
+  
+  <!-- POST TWEET FROM DATABASE -->
+  <form method="post" action="/saveTweet">
+    <div class="form-group row">
+      <label for="postTweetCategory" class="col-sm-3 col-form-label col-form-label-lg">
+	  Post Tweet From Database</label>
+	  <% for(var i=0; i < user.twitter.tweets.categories.length; i++) { %>
+	  <label class="radio-inline"><input type="radio" name="postTweetCategory"
+	  value="<%= user.twitter.tweets.categories[i].name %>">
+	  <%= user.twitter.tweets.categories[i].name %></label>
+	  <% } %>
+	</div>
+	<div class="form-group row">
+        <select class="form-control" id="selectSavedTweet" name="selectSavedTweet">
+		  <option value="">Please select a saved tweet</option>
+        </select>
+	  <div class="col-sm-1">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+	</div>
+  </form>
+  
+<script>
+  var selectedCategory = "";
+  $('input:radio[name="postTweetCategory"]').change(function() {
+	selectedCategory = this.value;
+  });
+</script>
+  
 </body>
 </html>

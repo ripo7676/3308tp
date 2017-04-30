@@ -89,18 +89,19 @@ module.exports = function(app, passport) {
     // SAVE TWEET ==========================
     // =====================================
     app.post('/saveTweet', isLoggedIn, function(req, res) {
-		console.log(req.body.saveTweetInput)
-		var User = require('../app/models/user');
-		User.findByIdAndUpdate(
-		  req.user._id,
-		  { $push: { 'twitter.tweets.messages':
-		    {category: 'test', body: req.body.saveTweetInput}}
-		  },
-		  { safe: true, upsert: true, new : true},
-		  function(err, numberAffected, raw) {
-            if (err) console.log(err);
-		  }	
-		)
+		if (req.body.saveTweetCategory != "" && req.body.saveTweetInput != "") {
+		  var User = require('../app/models/user');
+		  var category = req.body.saveTweetCategory
+		  var newMessage = req.body.saveTweetInput
+	      User.findOneAndUpdate(
+		    { _id: req.user._id, "twitter.tweets.categories.name": category},
+            { $push: { "twitter.tweets.categories.$.messages": {body: newMessage}}},
+            { safe: true, upsert: true, new : true},
+            function(err, numberAffected, raw) {
+              if (err) console.log(err);
+            }	
+          )
+		}
         res.render('post.ejs', {
             user : req.user // get the user out of session and pass to template
         });
@@ -111,18 +112,38 @@ module.exports = function(app, passport) {
     // =====================================
     app.post('/saveCategory', isLoggedIn, function(req, res) {
 		var User = require('../app/models/user');
+		if (req.body.categoryInput != "") {
+		  User.findByIdAndUpdate(
+		    req.user._id,
+	          { $push: { 'twitter.tweets.categories': {name: req.body.categoryInput}}},
+	          { safe: true, upsert: true, new : true},
+	        function(err, numberAffected, raw) {
+            if (err) console.log(err);
+		    }	
+		  )
+		}
+        res.render('post.ejs', {
+            user : req.user // get the user out of session and pass to template
+        });
+    });
+	
+	// =====================================
+    // DELETE CATEGORY =====================
+    // =====================================
+    app.post('/deleteCategory', isLoggedIn, function(req, res) {
+		console.log(req.body.selectDeleteCategory)
+		var User = require('../app/models/user');
 		User.findByIdAndUpdate(
 		  req.user._id,
-		  { $push: { 'twitter.tweets.categories': {name: req.body.categoryInput}}},
+		  { $pull: { 'twitter.tweets.categories': {name: req.body.selectDeleteCategory}}},
 		  { safe: true, upsert: true, new : true},
 		  function(err, numberAffected, raw) {
             if (err) console.log(err);
 		  }	
 		)
-		res.redirect('/post');
-        //res.render('post.ejs', {
-        //    user : req.user // get the user out of session and pass to template
-        //});
+        res.render('post.ejs', {
+            user : req.user // get the user out of session and pass to template
+        });
     });
 
     // =====================================
