@@ -93,6 +93,8 @@ module.exports = function(app, passport) {
     // SAVE TWEET ==========================
     // =====================================
     app.post('/saveTweet', isLoggedIn, function(req, res) {
+	      // dictionary of categories/messages, seems easer to parse than 'user'
+	    var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories)
 		if (req.body.saveTweetCategory != "" && req.body.saveTweetInput != "") {
 		  var User = require('../app/models/user');
 		  var category = req.body.saveTweetCategory
@@ -103,15 +105,14 @@ module.exports = function(app, passport) {
             { safe: true, upsert: true, new : true},
             function(err, numberAffected, raw) {
               if (err) console.log(err);
-            }	
-          )
+            }
+          ).then(function(){
+		    res.render('post.ejs',
+              { user : req.user, userJSON : thisUserJSON }
+            );	  
+		  });
 		}
-		  // dictionary of categories/messages, seems easer to parse than 'user'
-		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories)
-        res.render('post.ejs',
-          { user : req.user, userJSON : thisUserJSON }
-        );
-    });
+	});
 	
 	// =====================================
     // SAVE CATEGORY =======================
@@ -129,7 +130,7 @@ module.exports = function(app, passport) {
 		  )
 		}
 		  // dictionary of categories/messages, seems easer to parse than 'user'
-		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories)
+		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories);
         res.render('post.ejs',
           { user : req.user, userJSON : thisUserJSON }
         );
