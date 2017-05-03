@@ -2,7 +2,7 @@ import norris
 
 i = 0
 
-quant = 2
+quant = 20
 
 while i != quant:
 
