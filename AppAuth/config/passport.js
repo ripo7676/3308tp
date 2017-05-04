@@ -2,16 +2,19 @@
 
 //! Load all the things we need.
 var LocalStrategy   = require('passport-local').Strategy;
+var TwitterStrategy = require('passport-twitter').Strategy;
 
 //! Load up the user model.
-var User            = require('../app/models/user');
+var User  = require('../app/models/user');
+
+var configAuth = require('./auth');
 
 //! Expose this function to our app using module.exports
 module.exports = function(passport) {
 
-    // =========================================================================
-    // passport session setup ==================================================
-    // =========================================================================
+    // ======================================================================
+    // passport session setup ===============================================
+    // ======================================================================
     // required for persistent login sessions
     // passport needs ability to serialize and unserialize users out of session
 
@@ -27,9 +30,9 @@ module.exports = function(passport) {
         });
     });
 
-    // =========================================================================
-    // LOCAL SIGNUP ============================================================
-    // =========================================================================
+    // ======================================================================
+    // LOCAL SIGNUP =========================================================
+    // ======================================================================
     // by default, if there was no name, it would just be called 'local'
 
     passport.use('local-signup', new LocalStrategy({
@@ -78,9 +81,9 @@ module.exports = function(passport) {
 
     }));
     
-    // =========================================================================
-    // LOCAL LOGIN =============================================================
-    // =========================================================================
+    // ======================================================================
+    // LOCAL LOGIN ==========================================================
+    // ======================================================================
     // by default, if there was no name, it would just be called 'local'
 
     passport.use('local-login', new LocalStrategy({
@@ -109,6 +112,54 @@ module.exports = function(passport) {
             // all is well, return successful user
             return done(null, user);
         });
+
+    }));
+	
+	// =====================================================================
+    // TWITTER =============================================================
+    // =====================================================================
+    passport.use(new TwitterStrategy({
+
+        consumerKey     : configAuth.twitterAuth.consumerKey,
+        consumerSecret  : configAuth.twitterAuth.consumerSecret,
+        callbackURL     : configAuth.twitterAuth.callbackURL
+
+    },
+    function(token, tokenSecret, profile, done) {
+
+        
+    // User.findOne won't fire until we have all our data back from Twitter
+        process.nextTick(function() {
+
+            User.findOne({ 'twitter.id' : profile.id }, function(err, user) {
+
+                // if there is an error, stop everything and return that
+                if (err)
+                    return done(err);
+
+                // if the user is found then log them in
+                if (user) {
+                    return done(null, user); // user found, return user
+                } else {
+                    // if there is no user, create them
+                    var newUser   = new User();
+
+                    // set all of the user data that we need given Twitter format
+                    newUser.twitter.id          = profile.id;
+                    newUser.twitter.token       = token;
+                    newUser.twitter.username    = profile.username;
+                    newUser.twitter.displayName = profile.displayName;
+
+                    // save our user into DB
+                    newUser.save(function(err) {
+                        if (err)
+                            throw err;
+                        return done(null, newUser);
+                    });
+                }
+            });
+
+		});
 
     }));
 
