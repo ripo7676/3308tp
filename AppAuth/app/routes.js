@@ -104,19 +104,17 @@ module.exports = function(app, passport) {
 	// =====================================
     app.post('/postTweet', isLoggedIn, function(req, res) {
         var Twitter = require('twitter');
-		console.log(req.user.twitter._id);
-		console.log(req.user.twitter.token);
 		var client = new Twitter({
     	    "consumerKey": "gSsS6rSmJQHSBBriu3U5qYIoH",
     	    "consumerSecret": "HpsgEaDHpco4Y1YfhkS2v1GpAdZbhw3w56MO6QtdxnhTP0LVVE",
-    	    "accessToken": req.user.twitter._id,
+    	    "accessToken": req.user.twitter.id,
     	    "accessTokenSecret": req.user.twitter.token,
         });
-		client.post('statuses/update', {status: 'I am a tweet'},
-            function(error, tweet, response) {
-                if (!error) console.log(tweet);
-			}
-        );
+        client.post('statuses/update', {status: 'I am a tweet'}, function(error, tweet, response) {
+            if (!error) {
+                console.log(tweet);
+            }
+        });
 		
 		  // dictionary of categories/messages, seems easer to parse than 'user'
 		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories)
