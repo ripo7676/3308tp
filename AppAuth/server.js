@@ -8,6 +8,7 @@
 var express  = require('express');
   //! "The app object conventionally denotes the Express application."
 var app      = express();
+  //! Set the environment variable used to define the port number. 
 var port     = process.env.PORT || 8080;
   //! "A MongoDB object modeling tool."
 var mongoose = require('mongoose');
@@ -17,12 +18,13 @@ var async = require('async');
 var passport = require('passport');
   //! "Flash messages are stored in the session."
 var flash    = require('connect-flash');
-
+  //! "Create a new morgan logger middleware function using the given format and options."
 var morgan       = require('morgan');
   //! "Parse Cookie header and populate req.cookies with an object keyed by the cookie names."
 var cookieParser = require('cookie-parser');
   //! "Parse incoming request bodies in a middleware before your handlers, available under the req.body property."
 var bodyParser   = require('body-parser');
+  //! "Create a session middleware with the given options."
 var session      = require('express-session');
 
   //! Settings for connecting to the database.
@@ -63,5 +65,6 @@ app.use(flash());
 require('./app/routes.js')(app, passport);
 
 // launch ======================================================================
+  //! Start listening for HTTP requests at (port).
 app.listen(port);
 console.log('The magic happens on port ' + port);

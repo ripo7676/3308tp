@@ -1,5 +1,5 @@
 // config/database.js
-//module.exports = 'mongodb://localhost/db_name'
+//! module.exports = 'mongodb://localhost/db_name'
 module.exports = {
 	url : 'mongodb://Jotr4184:CSCI3308TEAM1107@ds153730.mlab.com:53730/team1107test'
 };
