@@ -119,22 +119,22 @@ module.exports = function(app, passport) {
     // =====================================
     app.post('/saveCategory', isLoggedIn, function(req, res) {
 		var User = require('../app/models/user');
-		if (req.body.categoryInput != "") {
-		  User.findByIdAndUpdate(
-		    req.user._id,
-	          { $push: { 'twitter.tweets.categories': {name: req.body.categoryInput}}},
-	          { safe: true, upsert: true, new : true},
-	        function(err, numberAffected, raw) {
-            if (err) console.log(err);
-		    }	
-		  )
-		}
-		  // dictionary of categories/messages, seems easer to parse than 'user'
-		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories);
-        res.render('post.ejs',
-          { user : req.user, userJSON : thisUserJSON }
-        );
-    });
+		var async = require('async');
+		async.waterfall([
+		    function() {
+				User.find({ id: req.user._id})
+				.update({$push:{'twitter.tweets.categories':{name: req.body.categoryInput}}},
+				{safe:true,upsert:true,new:true}
+				);
+			},
+			function() {
+				var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories);
+                res.render('post.ejs',
+                    { user : req.user, userJSON : thisUserJSON }
+		        );
+			}
+		])		
+	});
 	
 	// =====================================
     // DELETE CATEGORY =====================
@@ -147,7 +147,7 @@ module.exports = function(app, passport) {
 		  { $pull: { 'twitter.tweets.categories': {name: req.body.selectDeleteCategory}}},
 		  { safe: true, upsert: true, new : true},
 		  function(err, numberAffected, raw) {
-            if (err) console.log(err);
+            if (err != null && err != req.body.selectDeleteCategory) console.log(err);
 		  }	
 		)
 		  // dictionary of categories/messages, seems easer to parse than 'user'
