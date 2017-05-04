@@ -12,6 +12,8 @@ Richard Poulson,   ripo7676
 
 TITLE: Automated Twitter Manager (AutoTweet)
 
+URL: http://twittermanager.herokuapp.com/
+
 DESCRIPTION: A tool which allows one to input tweets to a database, and then have those tweets be sent out on timed intervals.
 
 VISION STATEMENT: Create a resource for businesses to maintain a Twitter presence without having to have a dedicated social media manager.
