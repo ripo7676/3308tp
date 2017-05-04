@@ -15,7 +15,7 @@ module.exports = function(app, passport) {
     app.get('/login', function(req, res) {
 
         // render the page and pass in any flash data if it exists
-        res.render('login.ejs', { message: req.flash('loginMessage') }); 
+        res.render('login.ejs', { message: req.flash('loginMessage') });
     });
 
     // process the login form
@@ -52,7 +52,7 @@ module.exports = function(app, passport) {
             user : req.user // get the user out of session and pass to template
         });
     });
-	
+
 	// =====================================
     // SETTINGS SECTION ====================
     // =====================================
@@ -63,7 +63,7 @@ module.exports = function(app, passport) {
             user : req.user // get the user out of session and pass to template
         });
     });
-	
+
 	// =====================================
     // POST TO TWITTER SECTION =============
     // =====================================
@@ -76,7 +76,7 @@ module.exports = function(app, passport) {
           { user : req.user, userJSON : thisUserJSON }
         );
     });
-	
+
 	// =====================================
     // POST TWEET ==========================
     // =====================================
@@ -88,7 +88,7 @@ module.exports = function(app, passport) {
           { user : req.user, userJSON : thisUserJSON }
         );
     });
-	
+
 	// =====================================
     // SAVE TWEET ==========================
     // =====================================
@@ -109,11 +109,11 @@ module.exports = function(app, passport) {
           ).then(function(){
 		    res.render('post.ejs',
               { user : req.user, userJSON : thisUserJSON }
-            );	  
+            );
 		  });
 		}
 	});
-	
+
 	// =====================================
     // SAVE CATEGORY =======================
     // =====================================
@@ -126,16 +126,16 @@ module.exports = function(app, passport) {
 	          { safe: true, upsert: true, new : true},
 	        function(err, numberAffected, raw) {
             if (err) console.log(err);
-		    }	
+		    }
 		  )
 		}
 		  // dictionary of categories/messages, seems easer to parse than 'user'
 		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories);
-        res.render('post.ejs',
+        res.render('settings.ejs',
           { user : req.user, userJSON : thisUserJSON }
         );
     });
-	
+
 	// =====================================
     // DELETE CATEGORY =====================
     // =====================================
@@ -148,11 +148,11 @@ module.exports = function(app, passport) {
 		  { safe: true, upsert: true, new : true},
 		  function(err, numberAffected, raw) {
             if (err) console.log(err);
-		  }	
+		  }
 		)
 		  // dictionary of categories/messages, seems easer to parse than 'user'
 		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories)
-        res.render('post.ejs',
+        res.render('settings.ejs',
           { user : req.user, userJSON : thisUserJSON }
         );
     });
@@ -169,7 +169,7 @@ module.exports = function(app, passport) {
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
 
-    // if user is authenticated in the session, carry on 
+    // if user is authenticated in the session, carry on
     if (req.isAuthenticated())
         return next();
 
