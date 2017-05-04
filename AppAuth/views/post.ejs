@@ -55,7 +55,7 @@
   </form>
 
   <div class="col-sm-12" style="height:24px;"></div>  <!-- white space -->
-  
+
   <!-- POST TWEET FROM DATABASE -->
   <form method="post" action="/postDBTweet">
     <div class="form-inline row">
@@ -77,8 +77,8 @@
 	<div class="row"></div>
   </form>
 
-  <div class="col-sm-12" style="height:100px;"></div>  <!-- white space -->
-  
+  <div class="col-sm-12" style="height:24px;"></div>  <!-- white space -->
+
   <!-- SAVE TWEET -->
   <form method="post" action="/saveTweet">
     <div class="form-inline row">
@@ -102,7 +102,7 @@
   </form>
 
   <div class="col-sm-12" style="height:24px;"></div>  <!-- white space -->
-  
+
   <!-- DELETE TWEET FROM DATABASE -->
   <form method="post" action="/deleteTweet">
     <div class="form-inline row">
@@ -141,7 +141,7 @@
 	  }
 	}
   });
-  
+
   $('input:radio[name="deleteTweetCategory"]').change(function() {  // when category is changed..
 	selectedCategory = this.value;  // store the name of the catagory selected
 	  //! Assigned the value of the category for the new tweet.

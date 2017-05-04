@@ -1,5 +1,5 @@
 ///
-/// NodeJS server file: sets view engine to EJS, connects to DB, uses 'passport' for sessions. 
+/// NodeJS server file: sets view engine to EJS, connects to DB, uses 'passport' for sessions.
 ///
 
 // set up ======================================================================
@@ -8,7 +8,7 @@
 var express  = require('express');
   //! "The app object conventionally denotes the Express application."
 var app      = express();
-  //! Set the environment variable used to define the port number. 
+  //! Set the environment variable used to define the port number.
 var port     = process.env.PORT || 8080;
   //! "A MongoDB object modeling tool."
 var mongoose = require('mongoose');
@@ -29,6 +29,8 @@ var session      = require('express-session');
 
   //! Settings for connecting to the database.
 var configDB = require('./config/database.js');
+//! use the twitter api
+var TwitterPackage = require('twitter');
 
 // configuration ===============================================================
   //! Connect to our database.
@@ -55,9 +57,9 @@ app.set('view engine', 'ejs');
 // required for passport
 app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); //! session secret
 app.use(passport.initialize());
-  //! Persistent login sessions. 
+  //! Persistent login sessions.
 app.use(passport.session());
-  //! Use connect-flash for flash messages stored in session. 
+  //! Use connect-flash for flash messages stored in session.
 app.use(flash());
 
 // routes ======================================================================
