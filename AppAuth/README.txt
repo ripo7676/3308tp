@@ -1,9 +1,9 @@
-http://localhost:8080
+	http://127.0.0.1:8080
 
 Everything you need is in the "AppAuth" (Authentication) folder.
 
 ****Unfortunately as of now, the full posting to the database ONLY works on WINDOWS******
-(The WebApp itself works just online (//localhost:8080) but the method of posting needs to be running on Windows not VM)
+(The WebApp itself works just online (http://127.0.0.1:8080) but the method of posting needs to be running on Windows not VM)
 
 -Install NPM & Node.js for Windows
 (You have to restart after you install before it works, it WILL NOT WORK without restarting your computer)
@@ -37,7 +37,7 @@ Once you're in the 'AppAuth' folder, simply type:
 node server.js
 
 This will cause everything to start up then visit it at:
-//localhost:8080
+	http://127.0.0.1:8080
 
 **Not needed anymore!**
 To start MongoDB:
