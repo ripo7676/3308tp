@@ -33,10 +33,9 @@
                 <h3><span class="fa fa-user"></span><%= user.local.email %></h3>
                     <!-- Need to add twitter account and password to database and display-->
                     <p>
-                        <strong>Twitter Account</strong>: ATM1107
-                    </p>
-                    <p>
-                        <strong>Twitter Account Password</strong>: monkey
+                        <strong>ID</strong>: <%= user._id %><br>
+						<strong>Email</strong>: <%= user.local.email %><br>
+						<strong>Password</strong>: <%= user.local.password %>
                     </p>
 
             </div>
