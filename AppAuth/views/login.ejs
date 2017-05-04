@@ -7,14 +7,16 @@
 	<!-- <link rel="stylesheet" type="text/css" href="bootstrap-theme.min.css"/> -->
     <link rel="stylesheet" type="text/css" href="./styles/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="./styles/page_theme.css"/>
-    <link rel="stylesheet" type="text/css" href="./styles/login.css"/>
+    <link rel="stylesheet" type="text/css" href="./styles/index.css"/>
 </head>
 <body>
 <div class="container">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
 
-<div class="col-sm-6 col-sm-offset-3">
+<div class="jumbotron text-center">
 
-    <h1><span class="fa fa-sign-in"></span> Login</h1>
+    <h1><span ><img src="/images/TieLarge.png" alt="Automated Twitter Manager" style="width:80px;height:80px;"></img></span> Login</h1>
 
     <!-- show any messages that come back with authentication -->
     <% if (message.length > 0) { %>
@@ -32,7 +34,7 @@
             <input type="password" class="form-control" name="password">
         </div>
 
-        <button type="submit" class="btn btn-warning btn-lg">Login</button>
+        <button type="submit" class="btn btn-warning btn-default">Login</button>
     </form>
 
     <hr>
@@ -41,7 +43,7 @@
     <p>Or go <a href="/">home</a>.</p>
 
 </div>
-
+</div>
 </div>
 </body>
 </html>

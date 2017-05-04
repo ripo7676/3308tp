@@ -7,36 +7,34 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 </head>
 <body>
-            <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
+            <nav class="navbar navbar-inverse" role="navigation" style="">
+              <ul class="nav navbar-nav navbar-left">
+                  <li><img src="/images/TieSmall.png" alt="Automated Twitter Manager" style="width:48px;height:48px;"></img></li>
+              </ul>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="">Home<span class="sr-only">(current)</span></a></li>
                     <li><a href="/post">Post To Twitter</a></li>
                     <li><a href="/settings">Settings</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" style="">
+                  <li><a href="/logout"><span class="fa fa-user" style="margin-right: 6px;"></span>Logout</a></li>
                 </ul>
             </nav>
 
 <div class="container">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+
+        <h1><img src="/images/TieLarge.png" alt="Automated Twitter Manager" style="width:128px;height:128px;"></img></h1>
+        <h2><strong>Welcome Back! <%= user.local.email %></h2>
+          <p>To post a tweet right now simply select Post To Twitter from the navigation bar on top</p>
+          <p>To make changes to your account or database select settings</p>
     </div>
 
     <div class="row">
 
-        <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
 
-                    <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>password</strong>: <%= user.local.password %>
-                    </p>
 
-            </div>
-        </div>
 
     </div>
 

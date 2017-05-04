@@ -5,6 +5,7 @@
     <title>Team1107</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <link rel="stylesheet" type="text/css" href="./styles/index.css"/>
     <style>
         body        { padding-top:80px; }
     </style>
@@ -12,10 +13,12 @@
 <body>
 <div class="container">
 
-<div class="col-sm-6 col-sm-offset-3">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
 
-    <h1><span class="fa fa-sign-in"></span> Signup</h1>
+  <div class="jumbotron text-center">
 
+    <h1><span ><img src="/images/TieLarge.png" alt="Automated Twitter Manager" style="width:80px;height:80px;"></img></span> Sign Up</h1>
     <!-- show any messages that come back with authentication -->
     <% if (message.length > 0) { %>
         <div class="alert alert-danger"><%= message %></div>
@@ -32,7 +35,7 @@
             <input type="password" class="form-control" name="password">
         </div>
 
-        <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+        <button type="submit" class="btn btn-warning btn-default">Signup</button>
     </form>
 
     <hr>

@@ -7,6 +7,7 @@
     <script src="/config/jquery-3.2.1.min.js"></script>
 	<script src="/config/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/styles/bootstrap.min.css"/>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -17,18 +18,21 @@
   usersTweets = JSON.parse(string1);
 </script>
 
-            <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
+            <nav class="navbar navbar-inverse" role="navigation" style="">
                 <ul class="nav navbar-nav">
+                  <li><img src="/images/TieSmall.png" alt="Automated Twitter Manager" style="width:48px;height:48px;"></img></li>
                     <li><a href="/profile">Home</a></li>
                     <li class="active"><a href="">Post To Twitter<span class="sr-only">(current)</span></a></li>
                     <li><a href="/settings">Settings</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" style="">
+                  <li><a href="/logout"><span class="fa fa-user" style="margin-right: 6px;"></span>Logout</a></li>
                 </ul>
             </nav>
 
 <div class="container">
   <div class="page-header text-center">
     <h1><span class="fa fa-twitter"></span> Post to Twitter</h1>
-    <a href="/logout" class="btn btn-default btn-sm">Logout</a>
   </div>
 </div>
 
@@ -48,9 +52,9 @@
       </div>
     </div>
   </form>
-  
+
   <div class="col-sm-12" style="height:50px;"></div>  <!-- white space -->
-  
+
   <!-- CREATE CATEGORY -->
   <form method="post" action="/saveCategory">
     <div class="form-group row">
@@ -64,9 +68,9 @@
       </div>
     </div>
   </form>
-  
+
   <div class="col-sm-12" style="height:50px;"></div>  <!-- white space -->
-  
+
   <!-- DELETE CATEGORY -->
   <form method="post" action="/deleteCategory">
     <div class="form-group row">
@@ -85,9 +89,9 @@
       </div>
     </div>
   </form>
-  
+
   <div class="col-sm-12" style="height:50px;"></div>  <!-- white space -->
-  
+
   <!-- SAVE TWEET -->
   <form method="post" action="/saveTweet">
     <div class="form-group row">
@@ -109,9 +113,9 @@
       </div>
 	</div>
   </form>
-  
+
   <div class="col-sm-12" style="height:50px;"></div>  <!-- white space -->
-  
+
   <!-- POST TWEET FROM DATABASE -->
   <form method="post" action="/saveTweet">
     <div class="form-group row">
@@ -131,7 +135,7 @@
       </div>
 	</div>
   </form>
-  
+
 <script>
   var selectedCategory = "";
   $('input:radio[name="postTweetCategory"]').change(function() {  // when category is changed..
@@ -148,6 +152,6 @@
 	}
   });
 </script>
-  
+
 </body>
 </html>
