@@ -7,11 +7,15 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 </head>
 <body>
-            <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
+            <nav class="navbar navbar-inverse" role="navigation" style="">
                 <ul class="nav navbar-nav">
+                  <li><img src="/images/TieSmall.png" alt="Automated Twitter Manager" style="width:48px;height:48px;"></img></li>
                     <li><a href="/profile">Home</a></li>
                     <li><a href="/post">Post To Twitter</a></li>
                     <li class="active"><a href="">Settings<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" style="">
+                  <li><a href="/logout"><span class="fa fa-user" style="margin-right: 6px;"></span>Logout</a></li>
                 </ul>
             </nav>
 
@@ -19,19 +23,20 @@
 
     <div class="page-header text-center">
         <h1><span class="fa fa-cog"></span>Settings</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
 
     <div class="row">
 
         <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
+        <div class="col-sm-12">
             <div class="well">
                 <h3><span class="fa fa-user"></span><%= user.local.email %></h3>
                     <!-- Need to add twitter account and password to database and display-->
                     <p>
-                        <strong>Twitter Account</strong>: <%= user.local.email %><br>
-                        <strong>Twitter Account Password</strong>: <%= user.local.password %>
+                        <strong>Twitter Account</strong>: ATM1107
+                    </p>
+                    <p>
+                        <strong>Twitter Account Password</strong>: monkey
                     </p>
 
             </div>
@@ -54,8 +59,6 @@
               </div>
             </form>
 
-            <div class="col-sm-12" style="height:50px;"></div>
-
             <form method="post" action="/saveTwitterPassword">
               <div class="form-group row">
                 <label for="categoryInput" class="col-sm-2 col-form-label col-form-label-lg">Twitter Password</label>
@@ -65,6 +68,43 @@
                 </div>
               <div class="col-sm-1">
                   <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+              </div>
+            </form>
+
+            <div class="col-sm-12" style="height:50px;"></div>  <!-- white space -->
+
+            <!-- CREATE CATEGORY -->
+            <form method="post" action="/saveCategory">
+              <div class="form-group row">
+                <label for="categoryInput" class="col-sm-2 col-form-label col-form-label-lg">Create Category</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control form-control-lg" id="categoryInput" name="categoryInput"
+          		placeholder="Type your new category here">
+                </div>
+          	  <div class="col-sm-1">
+                  <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+              </div>
+            </form>
+
+
+
+            <!-- DELETE CATEGORY -->
+            <form method="post" action="/deleteCategory">
+              <div class="form-group row">
+          	  <label for="selectDeleteCategory" class="col-sm-2 col-form-label col-form-label-lg">Delete Category</label>
+          	  <div class="col-sm-4">
+                  <select class="form-control" id="selectDeleteCategory" name="selectDeleteCategory">
+          		  <option value="">Please select catagory to be deleted</option>
+          	      <% for(var i=1; i < user.twitter.tweets.categories.length; i++) { %>
+                    <option value="<%= user.twitter.tweets.categories[i].name %>">
+          		  <%= user.twitter.tweets.categories[i].name %></option>
+          	      <% } %>
+                  </select>
+                </div>
+          	  <div class="col-sm-1">
+                  <button type="submit" class="btn btn-primary">Delete</button>
                 </div>
               </div>
             </form>

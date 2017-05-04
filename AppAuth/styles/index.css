@@ -1,7 +1,7 @@
 /* @import "bourbon";  not sure what this is for, ? */
 body {
 	padding-top:80px;
-    background-color: #D3D3D3;
+    background-color: #1b222d;
 		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,002080+44,002080+59,000000+100 */
 		/*background: -moz-linear-gradient(top, #000000 0%, #002080 44%, #002080 59%, #000000 100%); /* FF3.6-15 */
 		/*background: -webkit-linear-gradient(top, #000000 0%,#002080 44%,#002080 59%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
@@ -30,12 +30,12 @@ body {
 	margin-right: 15px;
     color: #ffffff;
 }
- 
+
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
     background: #33a6cc;
 	text-decoration: underline
 }
- 
+
 .btn-default:active, .btn-default.active {
     background: #007299;
 }
