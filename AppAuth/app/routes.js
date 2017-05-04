@@ -89,7 +89,7 @@ module.exports = function(app, passport) {
 
 	// =====================================
     // POST TWEET ==========================
-    // =====================================
+	// =====================================
     app.post('/postTweet', isLoggedIn, function(req, res) {
 		console.log(req.body.tweetInput)
 		  // dictionary of categories/messages, seems easer to parse than 'user'
@@ -101,20 +101,21 @@ module.exports = function(app, passport) {
 
 	// =====================================
     // SAVE TWEET ==========================
-    // =====================================
+	// =====================================
     app.post('/saveTweet', isLoggedIn, function(req, res) {
-	      // dictionary of categories/messages, seems easer to parse than 'user'
-	    var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories)
 		if (req.body.saveTweetCategory != "" && req.body.saveTweetInput != "") {
 		  var User = require('../app/models/user');
-		  var category = req.body.saveTweetCategory
+		  var categoryID = req.body.saveTweetCategory
 		  var newMessage = req.body.saveTweetInput
 	      User.findOneAndUpdate(
-		    { _id: req.user._id, "twitter.tweets.categories.name": category},
+		    { _id: req.user._id, "twitter.tweets.categories._id": categoryID},
             { $push: { "twitter.tweets.categories.$.messages": {body: newMessage}}},
             { safe: true, upsert: true, new : true},
-            function(err, numberAffected, raw) {
+            function(err, documentsAffected, raw) {
               if (err) console.log(err);
+			    //! dictionary of categories/messages, seems easer to parse than 'user'
+			  var thisUserJSON = JSON.stringify(documentsAffected);
+			  req.user = documentsAffected;
             }
           ).then(function(){
 		    res.render('post.ejs',
@@ -123,6 +124,28 @@ module.exports = function(app, passport) {
 		  });
 		}
 	});
+	
+	// =====================================
+    // DELETE TWEET FROM DATABASE ==========
+    // =====================================
+    app.post('/deleteTweet', isLoggedIn, function(req, res) {
+		var User = require('../app/models/user');
+		var categoryID = req.body.deleteTweetCategory
+		var messageID = req.body.selectDeleteTweet
+	    User.findOneAndUpdate(
+		  { _id: req.user._id, "twitter.tweets.categories._id": categoryID},
+		  { $pull: { "twitter.tweets.categories.$.messages": {_id: messageID}}},
+		  { safe: true, upsert: true, new : true},
+		  function(err, numberAffected, raw) {
+            if (err) console.log(err);
+		  }	
+		)
+		  // dictionary of categories/messages, seems easer to parse than 'user'
+		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories)
+        res.render('settings.ejs',
+          { user : req.user, userJSON : thisUserJSON }
+        );
+    });
 
 	// =====================================
     // SAVE CATEGORY =======================
@@ -130,27 +153,24 @@ module.exports = function(app, passport) {
     app.post('/saveCategory', isLoggedIn, function(req, res) {
 		var User = require('../app/models/user');
 		var async = require('async');
-		async.waterfall([
-		    function() {
-				User.find({ id: req.user._id})
-				.update({$push:{'twitter.tweets.categories':{name: req.body.categoryInput}}},
-				{safe:true,upsert:true,new:true}
-				);
-			},
-			function() {
-				var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories);
-                res.render('post.ejs',
-                    { user : req.user, userJSON : thisUserJSON }
-		        );
-			}
-		])		
+	    User.findOneAndUpdate(
+		  { _id: req.user._id},
+		  { $push: { "twitter.tweets.categories": {name: req.body.categoryInput}}},
+		  { safe: true, upsert: true, new : true},
+		  function(err, numberAffected, raw) {
+            if (err) console.log(err);
+		  }	
+		)
+		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories);
+        res.render('settings.ejs',
+            { user : req.user, userJSON : thisUserJSON }
+        );
 	});
 
 	// =====================================
     // DELETE CATEGORY =====================
     // =====================================
     app.post('/deleteCategory', isLoggedIn, function(req, res) {
-		console.log(req.body.selectDeleteCategory)
 		var User = require('../app/models/user');
 		User.findByIdAndUpdate(
 		  req.user._id,

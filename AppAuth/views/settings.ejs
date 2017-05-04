@@ -105,16 +105,14 @@
               <div class="form-group row">
                 <label for="categoryInput" class="col-sm-2 col-form-label col-form-label-lg">Create Category</label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control form-control-lg" id="categoryInput" name="categoryInput"
-          		placeholder="Type your new category here">
+                  <input type="text" class="form-control form-control-lg" id="categoryInput"
+				  name="categoryInput" placeholder="Type your new category here">
                 </div>
-          	  <div class="col-sm-1">
+          	    <div class="col-sm-1">
                   <button type="submit" class="btn btn-primary">Create</button>
                 </div>
               </div>
             </form>
-
-
 
             <!-- DELETE CATEGORY -->
             <form method="post" action="/deleteCategory">
@@ -122,14 +120,13 @@
           	  <label for="selectDeleteCategory" class="col-sm-2 col-form-label col-form-label-lg">Delete Category</label>
           	  <div class="col-sm-4">
                   <select class="form-control" id="selectDeleteCategory" name="selectDeleteCategory">
-          		  <option value="">Please select catagory to be deleted</option>
-          	      <% for(var i=1; i < user.twitter.tweets.categories.length; i++) { %>
+          	      <% for(var i=0; i < user.twitter.tweets.categories.length; i++) { %>
                     <option value="<%= user.twitter.tweets.categories[i].name %>">
           		  <%= user.twitter.tweets.categories[i].name %></option>
           	      <% } %>
                   </select>
                 </div>
-          	  <div class="col-sm-1">
+          	    <div class="col-sm-1">
                   <button type="submit" class="btn btn-primary">Delete</button>
                 </div>
               </div>

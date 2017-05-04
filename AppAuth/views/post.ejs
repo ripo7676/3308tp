@@ -40,8 +40,8 @@
 <div class="container">
   <!-- MANUAL TWEET -->
   <form method="post" action="/postTweet">
-    <div class="form-group row">
-      <label for="tweetInput" class="col-sm-2 col-form-label col-form-label-lg">Manual Tweet</label>
+    <div class="form-inline row">
+      <label for="tweetInput" class="col-sm-2">Manual Tweet</label>
 	</div>
 	<div class="form-group row">
       <div class="col-sm-9">
@@ -54,17 +54,39 @@
     </div>
   </form>
 
-
   <div class="col-sm-12" style="height:24px;"></div>  <!-- white space -->
+  
+  <!-- POST TWEET FROM DATABASE -->
+  <form method="post" action="/postTweet">
+    <div class="form-inline row">
+      <label for="postTweetCategory" class="col-sm-3">
+	  Post Tweet From Database</label>
+	  <% for(var i=0; i < user.twitter.tweets.categories.length; i++) { %>
+	  <label class="radio-inline col"><input type="radio" name="postTweetCategory"
+	  value="<%= user.twitter.tweets.categories[i]._id %>">
+	  <%= user.twitter.tweets.categories[i].name %></label>
+	  <% } %>
+	</div>
+	<div class="form-group row col-sm-12">
+      <select class="form-control col-sm-11" id="selectSavedTweet" name="selectSavedTweet">
+      </select>
+    </div>
+	<div class="row col-sm-1">
+        <button type="submit" class="btn btn-primary">Post</button>
+    </div>
+	<div class="row"></div>
+  </form>
 
+  <div class="col-sm-12" style="height:80px;"></div>  <!-- white space -->
+  
   <!-- SAVE TWEET -->
   <form method="post" action="/saveTweet">
-    <div class="form-group row">
-      <label for="saveTweetCategory" class="col-sm-3 col-form-label col-form-label-lg">
+    <div class="form-inline row">
+      <label for="saveTweetCategory" class="col-sm-3">
 	  Save Tweet to Database</label>
-	  <% for(var i=1; i < user.twitter.tweets.categories.length; i++) { %>
-	  <label class="radio-inline"><input type="radio" id="saveTweetCategory" name="saveTweetCategory"
-	  value="<%= user.twitter.tweets.categories[i].name %>">
+	  <% for(var i=0; i < user.twitter.tweets.categories.length; i++) { %>
+	  <label class="radio-inline col"><input type="radio" id="saveTweetCategory" name="saveTweetCategory"
+	  value="<%= user.twitter.tweets.categories[i]._id %>">
 	  <%= user.twitter.tweets.categories[i].name %></label>
 	  <% } %>
 	</div>
@@ -80,31 +102,27 @@
   </form>
 
   <div class="col-sm-12" style="height:24px;"></div>  <!-- white space -->
-
-  <!-- POST TWEET FROM DATABASE -->
-  <form method="post" action="/saveTweet">
-    <div class="form-group">
-      <label for="postTweetCategory" class="col-sm-3 col-form-label col-form-label-lg">
-	  Post Tweet From Database</label>
-	  <% for(var i=1; i < user.twitter.tweets.categories.length; i++) { %>
-	  <label class="radio-inline"><input type="radio" name="postTweetCategory"
-	  value="<%= user.twitter.tweets.categories[i].name %>">
+  
+  <!-- DELETE TWEET FROM DATABASE -->
+  <form method="post" action="/deleteTweet">
+    <div class="form-inline row">
+      <label for="deleteTweetCategory" class="col-sm-3">Delete Tweet from Database</label>
+	  <% for(var i=0; i < user.twitter.tweets.categories.length; i++) { %>
+	  <label class="radio-inline col"><input type="radio" id="deleteTweetCategory"
+	  name="deleteTweetCategory" value="<%= user.twitter.tweets.categories[i]._id %>">
 	  <%= user.twitter.tweets.categories[i].name %></label>
 	  <% } %>
 	</div>
-	<div class="form-group row">
-      <select class="form-control col-sm-8" id="selectSavedTweet" name="selectSavedTweet">
+    <div class="form-group row col-sm-12">
+      <select class="form-control col-sm-8" id="selectDeleteTweet" name="selectDeleteTweet">
       </select>
     </div>
-	  <div class="col-sm-1">
-
-        <button type="submit" class="btn btn-primary">Post</button>
+	<div class="row col-sm-1">
+        <button type="submit" class="btn btn-primary">Delete</button>
     </div>
-
-</div>
   </form>
 
-</div>
+</div> <!-- END OF THE CONTAINER -->
 
 <script>
   var selectedCategory = "";
@@ -115,10 +133,26 @@
 	  //! Clear everything except for the initial option.
 	mySelect.options.length = 0;
 	for (var i=0; i < usersTweets.length; i++) {
-	  if (usersTweets[i].name == selectedCategory) {
+	  if (usersTweets[i]._id == selectedCategory) {
 	    for (var j=0; j < usersTweets[i].messages.length; j++) {
 		  mySelect.options[j] = new Option (usersTweets[i].messages[j].body,
-		  usersTweets[i].messages[j].body);
+		  usersTweets[i].messages[j]._id);
+		}
+	  }
+	}
+  });
+  
+  $('input:radio[name="deleteTweetCategory"]').change(function() {  // when category is changed..
+	selectedCategory = this.value;  // store the name of the catagory selected
+	  //! Assigned the value of the category for the new tweet.
+	var mySelect2 = document.getElementById('selectDeleteTweet');
+	  //! Clear everything except for the initial option.
+	mySelect2.options.length = 0;
+	for (var i=0; i < usersTweets.length; i++) {
+	  if (usersTweets[i]._id == selectedCategory) {
+	    for (var j=0; j < usersTweets[i].messages.length; j++) {
+		  mySelect2.options[j] = new Option (usersTweets[i].messages[j].body,
+		  usersTweets[i].messages[j]._id);
 		}
 	  }
 	}
