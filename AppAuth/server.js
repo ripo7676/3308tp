@@ -30,7 +30,7 @@ var session      = require('express-session');
   //! Settings for connecting to the database.
 var configDB = require('./config/database.js');
 //! use the twitter api
-var TwitterPackage = require('twitter');
+//var TwitterPackage = require('twitter');
 
 // configuration ===============================================================
   //! Connect to our database.
