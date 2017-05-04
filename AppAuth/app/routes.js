@@ -37,9 +37,9 @@ module.exports = function(app, passport) {
 
     // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect : '/profile', // redirect to the secure profile section
-        failureRedirect : '/signup', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
+        successRedirect : '/profile',
+        failureRedirect : '/signup', 
+        failureFlash : true 
     }));
 
     // =====================================
@@ -56,8 +56,6 @@ module.exports = function(app, passport) {
 	// =====================================
     // SETTINGS SECTION ====================
     // =====================================
-    // we will want this protected so you have to be logged in to visit
-    // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/settings', isLoggedIn, function(req, res) {
         res.render('settings.ejs', {
             user : req.user // get the user out of session and pass to template
@@ -176,6 +174,30 @@ module.exports = function(app, passport) {
         req.logout();
         res.redirect('/');
     });
+	
+	// ====================================
+	//AUTHORIZE (FOR ACCOUNTS ALREADY LOGGED IN)
+	//=====================================
+	
+	//LOCAL
+	app.get('/connect/local', function(req, res) {
+			res.render('connect-local.ejs', { message: req.flash('loginMessage') });
+		});
+		app.post('/connect/local', passport.authenticate('local-signup', {
+			successRedirect : '/profile',
+			failureRedirect : '/connect/local', 
+			failureFlash : true 
+		}));
+		
+	//TWITTER
+	app.get('/connect/twitter', passport.authorize('twitter', { scope : 'email' }));
+
+		// handle the callback after twitter has AUTHORIZED the user
+		app.get('/connect/twitter/callback',
+			passport.authorize('twitter', {
+				successRedirect : '/profile',
+				failureRedirect : '/'
+			}));
 };
 
 //! Route middleware to make sure a user is logged in.

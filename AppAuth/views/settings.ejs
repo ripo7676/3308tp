@@ -1,4 +1,3 @@
-<!-- views/profile.ejs -->
 <!doctype html>
 <html>
 <head>
@@ -27,28 +26,50 @@
 
     <div class="row">
 
-        <!-- LOCAL INFORMATION + TWITTER INFORMATION -->
+        <!-- LOCAL INFORMATION -->
         <div class="col-sm-12">
             <div class="well">
                 <h3><span class="fa fa-user"></span><%= user.local.email %></h3>
+					<% if (user.local.email) { %>
+						<p>
+							<strong>Local ID</strong>: <%= user._id %><br>
+							<strong>Email</strong>: <%= user.local.email %><br>
+							<strong>Password (Encrypted)</strong>: <%= user.local.password %>
+						</p>
+						
+						<a href="/unlink/local" class="btn btn-default">Unlink</a>
+					<% } else { %>
+						<a href="/connect/local" class="btn btn-default">Connect Local</a>
+					<% } %>
+            </div>
+        </div>
+    </div>
+	
+	<div class="row">
+		
+		<!-- TWITTER INFORMATION -->
+        <div class="col-sm-12">
+            <div class="well">
+                <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
 
+                <!-- check if the user has this token (is the user authenticated with this social account) -->
+                <% if (user.twitter.token) { %>
                     <p>
-                        <strong>User ID</strong>: <%= user._id %><br>
-						<strong>Email</strong>: <%= user.local.email %><br>
-						<strong>Password (Encrypted)</strong>: <%= user.local.password %>
-                    </p>
-					
-					<p>
                         <strong>Twitter ID</strong>: <%= user.twitter.id %><br>
                         <strong>Twitter Token</strong>: <%= user.twitter.token %><br>
-                        <strong>Twitter Username</strong>: <%= user.twitter.username %><br>
-                        <strong>Twitter DisplayName</strong>: <%= user.twitter.displayName %>
+                        <strong>Twitter Display Name</strong>: <%= user.twitter.displayName %><br>
+                        <strong>Twitter Username</strong>: <%= user.twitter.username %>
                     </p>
+
+                    <a href="/unlink/twitter" class="btn btn-info">Unlink</a>
+                <% } else { %>
+                    <a href="/connect/twitter" class="btn btn-info">Connect Twitter</a>
+                <% } %>
+
             </div>
-
-          </div>
         </div>
-
+		
+		<!-- Save Twitter Account -->
             <div class="col-sm-12" style="height:50px;"></div>
 
             <form method="post" action="/saveTwitterAccount">
