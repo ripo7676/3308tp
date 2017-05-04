@@ -2,7 +2,7 @@ import norris
 
 i = 0
 
-quant = 20
+quant = 1
 
 while i != quant:
 
@@ -12,11 +12,11 @@ while i != quant:
 
 	print "Adding Chuck Norris Joke to database: %d" % i
 
-	#add code to populate database here
+
 
 	print f.read()
 
-	i = i + 1 
+	i = i + 1
 
 
 print "Added %d jokes to database" % i

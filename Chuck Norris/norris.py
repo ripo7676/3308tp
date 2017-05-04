@@ -20,7 +20,7 @@ def generateJoke():
 	joke = j['value']['joke']
 
 	decode = str(BeautifulSoup(joke, convertEntities=BeautifulSoup.HTML_ENTITIES))
-	
+
 	file.write(decode)
 
 	file.close
