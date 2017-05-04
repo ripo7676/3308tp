@@ -11,10 +11,11 @@
 </head>
 <body>
 
-<!-- Needed to get categories/messages here, EJS doesn't seem to work right in <script> section -->
 <div id="userTwitterData" twitterDataValue='<%= userJSON %>'</div>
 <script>
+    //! Read the categories/messages passed from EJS
   var string1 = $("#userTwitterData").attr("twitterDataValue");
+    //! Parse the string as a JSON representation and write resulting object to string1
   usersTweets = JSON.parse(string1);
 </script>
 
@@ -109,8 +110,10 @@
   var selectedCategory = "";
   $('input:radio[name="postTweetCategory"]').change(function() {  // when category is changed..
 	selectedCategory = this.value;  // store the name of the catagory selected
+	  //! Assigned the value of the category for the new tweet.
 	var mySelect = document.getElementById('selectSavedTweet');
-	mySelect.options.length = 0;  // clear all but initial option
+	  //! Clear everything except for the initial option.
+	mySelect.options.length = 0;
 	for (var i=0; i < usersTweets.length; i++) {
 	  if (usersTweets[i].name == selectedCategory) {
 	    for (var j=0; j < usersTweets[i].messages.length; j++) {
