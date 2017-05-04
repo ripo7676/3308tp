@@ -51,4 +51,3 @@ PROJECT TRACKING SOFTWARE: Trello
 
 Automation rules for twitter: https://support.twitter.com/articles/76915#
 
-Link to Website: https://twittermanager.herokuapp.com/
