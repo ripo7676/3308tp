@@ -88,7 +88,19 @@ module.exports = function(app, passport) {
     });
 
 	// =====================================
-    // POST TWEET ==========================
+    // POST DB TWEET =======================
+	// =====================================
+    app.post('/postDBTweet', isLoggedIn, function(req, res) {
+		console.log(req.body.tweetDBInput)
+		  // dictionary of categories/messages, seems easer to parse than 'user'
+		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories)
+        res.render('post.ejs',
+          { user : req.user, userJSON : thisUserJSON }
+        );
+    });
+	
+	// =====================================
+    // POST MANUAL TWEET ===================
 	// =====================================
     app.post('/postTweet', isLoggedIn, function(req, res) {
 		console.log(req.body.tweetInput)
