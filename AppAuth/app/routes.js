@@ -137,17 +137,14 @@ module.exports = function(app, passport) {
             { safe: true, upsert: true, new : true},
             function(err, documentsAffected, raw) {
               if (err) console.log(err);
-			    //! dictionary of categories/messages, seems easer to parse than 'user'
-			  var thisUserJSON = JSON.stringify(documentsAffected);
-			  req.user = documentsAffected;
             }
-          ).then(function(){
-		    res.render('post.ejs',
+          )
+		    //! dictionary of categories/messages, seems easer to parse than 'user'
+		  var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories);
+		  res.render('post.ejs',
               { user : req.user, userJSON : thisUserJSON }
-            );
-		  });
-		}
-	});
+          );
+	}});
 	
 	// =====================================
     // DELETE TWEET FROM DATABASE ==========
@@ -166,7 +163,7 @@ module.exports = function(app, passport) {
 		)
 		  // dictionary of categories/messages, seems easer to parse than 'user'
 		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories)
-        res.render('settings.ejs',
+        res.render('post.ejs',
           { user : req.user, userJSON : thisUserJSON }
         );
     });
