@@ -27,17 +27,23 @@
 
     <div class="row">
 
-        <!-- LOCAL INFORMATION -->
+        <!-- LOCAL INFORMATION + TWITTER INFORMATION -->
         <div class="col-sm-12">
             <div class="well">
                 <h3><span class="fa fa-user"></span><%= user.local.email %></h3>
-                    <!-- Need to add twitter account and password to database and display-->
+
                     <p>
                         <strong>User ID</strong>: <%= user._id %><br>
 						<strong>Email</strong>: <%= user.local.email %><br>
 						<strong>Password (Encrypted)</strong>: <%= user.local.password %>
                     </p>
-
+					
+					<p>
+                        <strong>Twitter ID</strong>: <%= user.twitter.id %><br>
+                        <strong>Twitter Token</strong>: <%= user.twitter.token %><br>
+                        <strong>Twitter Username</strong>: <%= user.twitter.username %><br>
+                        <strong>Twitter DisplayName</strong>: <%= user.twitter.displayName %>
+                    </p>
             </div>
 
           </div>
