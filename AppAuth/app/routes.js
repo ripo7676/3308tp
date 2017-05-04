@@ -38,8 +38,8 @@ module.exports = function(app, passport) {
     // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect : '/profile',
-        failureRedirect : '/signup', 
-        failureFlash : true 
+        failureRedirect : '/signup',
+        failureFlash : true
     }));
 
     // =====================================
@@ -61,7 +61,7 @@ module.exports = function(app, passport) {
             user : req.user // get the user out of session and pass to template
         });
     });
-	
+
 	// =====================================
     // TWITTER ROUTES ======================
     // =====================================
@@ -98,7 +98,7 @@ module.exports = function(app, passport) {
           { user : req.user, userJSON : thisUserJSON }
         );
     });
-	
+
 	// =====================================
     // POST MANUAL TWEET ===================
 	// =====================================
@@ -136,7 +136,7 @@ module.exports = function(app, passport) {
 		  });
 		}
 	});
-	
+
 	// =====================================
     // DELETE TWEET FROM DATABASE ==========
     // =====================================
@@ -150,11 +150,11 @@ module.exports = function(app, passport) {
 		  { safe: true, upsert: true, new : true},
 		  function(err, numberAffected, raw) {
             if (err) console.log(err);
-		  }	
+		  }
 		)
 		  // dictionary of categories/messages, seems easer to parse than 'user'
 		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories)
-        res.render('settings.ejs',
+        res.render('post.ejs',
           { user : req.user, userJSON : thisUserJSON }
         );
     });
@@ -171,7 +171,7 @@ module.exports = function(app, passport) {
 		  { safe: true, upsert: true, new : true},
 		  function(err, numberAffected, raw) {
             if (err) console.log(err);
-		  }	
+		  }
 		)
 		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories);
         res.render('settings.ejs',
@@ -190,7 +190,7 @@ module.exports = function(app, passport) {
 		  { safe: true, upsert: true, new : true},
 		  function(err, numberAffected, raw) {
             if (err != null && err != req.body.selectDeleteCategory) console.log(err);
-		  }	
+		  }
 		)
 		  // dictionary of categories/messages, seems easer to parse than 'user'
 		var thisUserJSON = JSON.stringify(req.user.twitter.tweets.categories)
@@ -206,21 +206,21 @@ module.exports = function(app, passport) {
         req.logout();
         res.redirect('/');
     });
-	
+
 	// ====================================
 	//AUTHORIZE (FOR ACCOUNTS ALREADY LOGGED IN)
 	//=====================================
-	
+
 	//LOCAL
 	app.get('/connect/local', function(req, res) {
 			res.render('connect-local.ejs', { message: req.flash('loginMessage') });
 		});
 		app.post('/connect/local', passport.authenticate('local-signup', {
 			successRedirect : '/profile',
-			failureRedirect : '/connect/local', 
-			failureFlash : true 
+			failureRedirect : '/connect/local',
+			failureFlash : true
 		}));
-		
+
 	//TWITTER
 	app.get('/connect/twitter', passport.authorize('twitter', { scope : 'email' }));
 
