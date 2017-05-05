@@ -230,6 +230,33 @@ module.exports = function(app, passport) {
 				successRedirect : '/profile',
 				failureRedirect : '/'
 			}));
+			
+	// =============================================================================
+	// UNLINK ACCOUNTS =============================================================
+	// =============================================================================
+	// used to unlink accounts. for social accounts, just remove the token
+	// for local account, remove email and password
+	// user account will stay active in case they want to reconnect in the future
+	
+	// LOCAL
+    app.get('/unlink/local', function(req, res) {
+        var user            = req.user;
+        user.local.email    = undefined;
+        user.local.password = undefined;
+        user.save(function(err) {
+            res.redirect('/profile');
+        });
+    });
+	
+	// Twitter
+    app.get('/unlink/twitter', function(req, res) {
+        var user           = req.user;
+        user.twitter.token = undefined;
+        user.save(function(err) {
+           res.redirect('/profile');
+        });
+    });
+	
 };
 
 //! Route middleware to make sure a user is logged in.
